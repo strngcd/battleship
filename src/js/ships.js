@@ -13,6 +13,9 @@ class ships {
     sink(){
         this.sunk = true
     }
+    is(){
+        return this.sunk
+    }
 }
 
-export default ships
+export  {ships}

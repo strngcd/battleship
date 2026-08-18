@@ -1,4 +1,6 @@
-import ships from '../src/js/ships'
+import {ships} from '../src/js/ships'
+
+
 describe('ships class', ()=>{
     let testships
 

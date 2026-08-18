@@ -25,5 +25,16 @@ describe("Game board class", ()=>{
         testGameBoard.placeShips('titanic',[[3,3],2])
         expect(testGameBoard.tempShow()[0].name).toBe('titanic')
         expect(testGameBoard.tempShow()[0].coord).toEqual([[3,3],[4,3],[5,3]])
+        expect(testGameBoard.tempShow()[0].status.is()).toBe(false)
+    })
+
+    test("Check if it counts hit shots correctly", ()=>{
+        testGameBoard.placeShips('titanic',[[3,3],2])
+        expect(testGameBoard.takeShot([4,3])).toBe(true)
+    })
+
+    test("check if it count misses",()=>{
+        testGameBoard.placeShips('titanic',[[3,3],2])
+        expect(testGameBoard.takeShot([0,0])).toBe(false)
     })
 })

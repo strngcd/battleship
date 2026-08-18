@@ -1,3 +1,4 @@
+import { ships } from "./ships"
 class GameBoard {
     constructor(){
         this.ships = []
@@ -34,11 +35,31 @@ class GameBoard {
         }else{ place = this.setCoord(shipCoord[0],shipCoord[1],shipCoord[2])}
         aShip.name = shipName
         aShip.coord = place
+        aShip.status = new ships(shipCoord[1])
         this.ships.push(aShip)
     }
     tempShow(){
         return this.ships
     }
+
+    takeShot(coord){
+        for (let i=0; i< this.ships.length;i++){
+            if (!this.ships[i].status.is()){
+                let current = this.ships[i].coord
+                for (let j=0; j< current.length; j++){
+                    if (JSON.stringify(coord) === JSON.stringify(current[j])){
+                        this.ships[i].status.hit()
+                        return true
+                    }
+                }
+            }
+        }
+        this.missed.push(coord)
+        return false
+
+    }
+
+    
 }
 
 

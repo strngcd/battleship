@@ -38,5 +38,17 @@ describe("Game board class", ()=>{
         expect(testGameBoard.takeShot([0,0])).toBe(false)
     })
 
-    //test("check if ")
+    test("check if it sinks a ship",()=>{
+        testGameBoard.placeShips('titanic',[[3,3],1])
+        testGameBoard.takeShot([3,3])
+        expect(testGameBoard.tempShow().length).toBe(0)
+    })
+
+    test("Check if it tells how many ships are left", ()=>{
+        testGameBoard.placeShips('titanic',[[3,3],2])
+        testGameBoard.takeShot([3,3])
+        expect(testGameBoard.playerLost()).toBe(1)
+        testGameBoard.takeShot([4,3])
+        expect(testGameBoard.playerLost()).toBe(true)
+    })
 })

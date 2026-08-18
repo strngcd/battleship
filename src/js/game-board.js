@@ -49,7 +49,7 @@ class GameBoard {
                 for (let j=0; j< current.length; j++){
                     if (JSON.stringify(coord) === JSON.stringify(current[j])){
                         this.ships[i].status.hit()
-                        if (this.ships[i].status.is){this.sinkShip(i)}
+                        if (this.ships[i].status.is()){this.sinkShip(i)}
                         return true
                     }
                 }
@@ -61,6 +61,12 @@ class GameBoard {
 
     sinkShip(index){
         this.ships.splice(index,1)
+    }
+
+    playerLost(){
+        if (this.ships.length === 0){
+            return true
+        }else{ return this.ships.length}
     }
     
 }

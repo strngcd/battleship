@@ -14,7 +14,7 @@ export default {
         new HtmlWebpackPlugin(),
 
     ],
-    modules: {
+    module: {
         rules:[
             {
                 test: /\.css$/i,

@@ -10,14 +10,14 @@ class GameBoard {
             return  undefined
         }else if (direction<0){
             place.push(coord)
-            for (let i=1; i< shipSize +1; i++){
+            for (let i=1; i< shipSize; i++){
                let hold = [...coord]
                hold[0]= hold[0]+i 
                place.push(hold)
             }
         }else{
             place.push(coord)
-            for (let i=1; i<shipSize+1;i++){
+            for (let i=1; i<shipSize;i++){
                let hold = [...coord]
                hold[1]= hold[1]+i 
                place.push(hold)
@@ -49,6 +49,7 @@ class GameBoard {
                 for (let j=0; j< current.length; j++){
                     if (JSON.stringify(coord) === JSON.stringify(current[j])){
                         this.ships[i].status.hit()
+                        if (this.ships[i].status.is){this.sinkShip(i)}
                         return true
                     }
                 }
@@ -56,9 +57,11 @@ class GameBoard {
         }
         this.missed.push(coord)
         return false
-
     }
 
+    sinkShip(index){
+        this.ships.splice(index,1)
+    }
     
 }
 

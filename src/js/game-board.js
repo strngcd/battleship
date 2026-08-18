@@ -1,6 +1,7 @@
 class GameBoard {
     constructor(){
-        this.shipsCoordinate = []
+        this.ships = []
+        this.missed = []
     }
     setCoord(coord,shipSize,direction=-1){
         let place = []
@@ -24,6 +25,22 @@ class GameBoard {
         }
         return place
     }
+
+    placeShips(shipName, shipCoord){
+        let place
+        let aShip = {}
+        if (shipCoord.length === 2){
+         place = this.setCoord(shipCoord[0],shipCoord[1])
+        }else{ place = this.setCoord(shipCoord[0],shipCoord[1],shipCoord[2])}
+        aShip.name = shipName
+        aShip.coord = place
+        this.ships.push(aShip)
+    }
+    tempShow(){
+        return this.ships
+    }
 }
 
-export default GameBoard
+
+
+export { GameBoard}

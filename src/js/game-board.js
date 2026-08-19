@@ -28,7 +28,7 @@ class GameBoard {
     }
 
     placeShips(shipName, shipCoord){
-        if (!this.checkShips(shipCoord[0])) return false
+        if (!this.checkShips([shipCoord[0]])) return false
         let place
         let aShip = {}
         if (shipCoord.length === 2){
@@ -75,8 +75,9 @@ class GameBoard {
         for (let i=0; i<this.ships.length;i++){
             let current = this.ships[i].coord
             let similarity = current.some(currentItem=>
-                    JSON.stringify(currentItem) === JSON.stringify(coord)
-                )
+                coord.some(coordItem=>
+                            JSON.stringify(currentItem) === JSON.stringify(coordItem)
+                ))
 
             if (similarity){return false}
         }

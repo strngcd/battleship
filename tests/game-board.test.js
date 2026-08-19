@@ -1,3 +1,4 @@
+import { experiments } from "webpack"
 import { GameBoard } from "../src/js/game-board"
 
 describe("Game board class", ()=>{
@@ -50,5 +51,19 @@ describe("Game board class", ()=>{
         expect(testGameBoard.playerLost()).toBe(1)
         testGameBoard.takeShot([4,3])
         expect(testGameBoard.playerLost()).toBe(true)
+    })
+
+    test("Check if checks for overlap",()=>{
+        testGameBoard.placeShips("titanic",[[3,3],3])
+        expect(testGameBoard.checkShips([4,3])).toBe(false)
+        expect(testGameBoard.checkShips([6,3])).toBe(true)
+        expect(testGameBoard.checkShips([2,3])).toBe(true)
+    })
+
+    test("Check if it doesn't place ship on top of another",()=>{
+        testGameBoard.placeShips("titanic",[[3,3],2])
+        expect(testGameBoard.placeShips("titanic",[[4,3],4])).toBe(false)
+        expect(testGameBoard.placeShips("titanic",[[6,3],3])).toBe(true)
+        expect(testGameBoard.placeShips("titanic",[[2,3],9])).toBe(true)
     })
 })

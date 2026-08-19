@@ -24,4 +24,15 @@ describe("Computer target test",()=>{
         const secondtarget = testComputer.attack()
         expect(firsttaget).not.toEqual(secondtarget)
     })
+
+    test('Check if it places ships right',()=>{
+        testComputer.gameBoard.placeShips('titanic', [[3,3],1])
+        testComputer.gameBoard.takeShot([3,3])
+        expect(testComputer.gameBoard.tempShow().length).toBe(0)
+    })
+
+    test("Check if it is standby",()=>{
+        testComputer.standby()
+        expect(testComputer.gameBoard.tempShow().length).toBe(4)
+    })
 })

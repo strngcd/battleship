@@ -1,6 +1,8 @@
+import { GameBoard } from "./game-board"
 class Computer {
     constructor(){
         this.previousTargets = []
+        this.gameBoard = new GameBoard()
     }
 
     attack(){
@@ -29,6 +31,28 @@ class Computer {
 
     checkPrevious(){
         return this.previousTargets
+    }
+
+    standby(){
+        
+        for (let i=0; i<4; i++){
+            let name = 'ship'+i
+            let target = this.pickTarget()
+            let place = this.gameBoard.setCoord(target,i)
+            let check = this.gameBoard.checkShips(place)
+            if(check){
+                this.gameBoard.placeShips(name,[target,i])
+            }else{
+                do{
+                    target = this.pickTarget()
+                    place = this.gameBoard.setCoord(target,i)
+                    check = this.gameBoard.checkShips(place)
+                }while(check)
+                this.gameBoard.placeShips(name,[target,i])
+            }
+
+            
+        }
     }
 }
 

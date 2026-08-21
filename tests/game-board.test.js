@@ -70,9 +70,7 @@ describe("Game board class", ()=>{
         testGameBoard.placeShips("titanic",[[3,3],2])
         expect(testGameBoard.placeShips("titanic",[[4,3],4])).toBe(false)
         expect(testGameBoard.placeShips("titanic",[[6,3],3])).toBe(true)
-        expect(testGameBoard.placeShips("titanic",[[2,3],9])).toBe(true)
-<<<<<<< HEAD
-=======
+        expect(testGameBoard.placeShips("titanic",[[2,3],9])).toBe(false)
         expect(testGameBoard.placeShips("titanic", [[2,3],2])).toBe(false)
 >>>>>>> player
     })

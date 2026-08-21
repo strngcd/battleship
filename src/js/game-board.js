@@ -28,7 +28,7 @@ class GameBoard {
     }
 
     placeShips(shipName, shipCoord){
-        if (!this.checkShips(this.setCoord(shipCoord[0]))) return false
+        if (!this.checkShips(this.setCoord(shipCoord[0],shipCoord[1]))) return false
         let place
         let aShip = {}
         if (shipCoord.length === 2){

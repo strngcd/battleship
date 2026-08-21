@@ -33,22 +33,30 @@ class Computer {
         return this.previousTargets
     }
 
+    pickTargetWithShipSize(n){
+        let x = Math.floor( Math.random()*n)
+        let y = Math.floor( Math.random()*n)
+        let coord = [x,y]
+        return coord
+    }
+
     standby(){
         
-        for (let i=0; i<4; i++){
+        for (let i=1; i<5; i++){
             let name = 'ship'+i
-            let target = this.pickTarget()
-            let place = this.gameBoard.setCoord(target,i)
+            let shipSize = i>=2 ? i:2
+            let target = this.pickTargetWithShipSize((10-shipSize))
+            let place = this.gameBoard.setCoord(target,shipSize)
             let check = this.gameBoard.checkShips(place)
             if(check){
-                this.gameBoard.placeShips(name,[target,i])
+                this.gameBoard.placeShips(name,[target,shipSize])
             }else{
                 do{
                     target = this.pickTarget()
                     place = this.gameBoard.setCoord(target,i)
                     check = this.gameBoard.checkShips(place)
-                }while(check)
-                this.gameBoard.placeShips(name,[target,i])
+                }while(!check)
+                this.gameBoard.placeShips(name,[target,shipSize])
             }
 
             

@@ -55,15 +55,9 @@ describe("Game board class", ()=>{
 
     test("Check if checks for overlap",()=>{
         testGameBoard.placeShips("titanic",[[3,3],3])
-<<<<<<< HEAD
-        expect(testGameBoard.checkShips([4,3])).toBe(false)
-        expect(testGameBoard.checkShips([6,3])).toBe(true)
-        expect(testGameBoard.checkShips([2,3])).toBe(true)
-=======
         expect(testGameBoard.checkShips([[4,3]])).toBe(false)
         expect(testGameBoard.checkShips([[6,3]])).toBe(true)
         expect(testGameBoard.checkShips([[2,3]])).toBe(true)
->>>>>>> player
     })
 
     test("Check if it doesn't place ship on top of another",()=>{
@@ -72,6 +66,6 @@ describe("Game board class", ()=>{
         expect(testGameBoard.placeShips("titanic",[[6,3],3])).toBe(true)
         expect(testGameBoard.placeShips("titanic",[[2,3],9])).toBe(false)
         expect(testGameBoard.placeShips("titanic", [[2,3],2])).toBe(false)
->>>>>>> player
+
     })
 })

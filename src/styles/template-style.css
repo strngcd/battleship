@@ -1,0 +1,248 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --screen: #9a9a8a;
+    --screen-dark: #6f7064;
+    --screen-light: #b8b8a6;
+    --dark: #292a25;
+    --grid: #4b4c45;
+    --hit: #292a25;
+    --miss: #6f7064;
+    --white: #d5d5c4;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #252525;
+    color: var(--dark);
+
+    font-family: "Courier New", monospace;
+}
+
+#game {
+    width: min(1000px, 95vw);
+    padding: 30px;
+
+    background: var(--screen);
+    border: 8px solid #151515;
+    border-radius: 12px;
+
+    box-shadow:
+        inset 0 0 0 3px #55564f,
+        0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* HEADER */
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+}
+
+#game-message {
+    font-size: 1rem;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+/* BOARDS */
+
+.game-area {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.board-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.board-title {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+.board {
+    width: 320px;
+    height: 320px;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
+    border: 3px solid var(--dark);
+    background: var(--screen-dark);
+}
+
+/* CELLS */
+
+.cell {
+    border: 1px solid var(--grid);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.cell:hover {
+    background: var(--screen-light);
+}
+
+/* PLAYER SHIPS */
+
+.cell.ship {
+    background: var(--dark);
+}
+
+/* ATTACK RESULTS */
+
+.cell.hit {
+    background: var(--hit);
+}
+
+.cell.miss {
+    background: var(--screen-light);
+
+    position: relative;
+}
+
+.cell.miss::after {
+    content: "×";
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* GAME INFO */
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+
+    margin-top: 30px;
+    padding: 15px;
+
+    border-top: 2px solid var(--grid);
+    border-bottom: 2px solid var(--grid);
+}
+
+.turn-display,
+.ships-display {
+    display: flex;
+    gap: 10px;
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+/* CONTROLS */
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 25px;
+}
+
+#new-game {
+    padding: 10px 25px;
+
+    border: 3px solid var(--dark);
+    background: var(--screen-light);
+    color: var(--dark);
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#new-game:hover {
+    background: var(--dark);
+    color: var(--screen);
+}
+
+#new-game:active {
+    transform: translateY(2px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    #game {
+        padding: 20px;
+    }
+
+    .board {
+        width: min(80vw, 320px);
+        height: min(80vw, 320px);
+    }
+
+    .game-area {
+        gap: 30px;
+    }
+
+    .game-info {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* A ship was hit */
+.cell.hit {
+    background: #292a25;
+    position: relative;
+}
+
+.cell.hit::after {
+    content: "×";
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+/* A shot missed */
+.cell.miss {
+    background: #b8b8a6;
+    position: relative;
+}
+
+.cell.miss::after {
+    content: "•";
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.cell.hit {
+    background: #292a25;
+}
+
+.cell.miss::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #292a25;
+    border-radius: 50%;
+}

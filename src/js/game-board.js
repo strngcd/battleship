@@ -1,4 +1,4 @@
-import { ships } from "./ships"
+import { ships } from "./ships.js"
 class GameBoard {
     constructor(){
         this.ships = []
@@ -65,10 +65,13 @@ class GameBoard {
         this.ships.splice(index,1)
     }
 
-    playerLost(){
+    shipsRemain(){
+        return this.ships.length
+    }
+    isLost(){
         if (this.ships.length === 0){
             return true
-        }else{ return this.ships.length}
+        }else{ return false}
     }
     checkShips(coord){
         if (this.ships.length === 0){return true}

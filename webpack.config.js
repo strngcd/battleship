@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
     mode: "development",
-    entry: "./src/index.js",
+    entry: "./src/js/index.js",
     output: {
         filename: "main.js",
         path: path.resolve(import.meta.dirname, "dist"),
@@ -11,7 +11,11 @@ export default {
     },
     devtool: "eval-source-map",
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin(
+            {
+                template: "./src/template.html"
+            }
+        ),
 
     ],
     module: {

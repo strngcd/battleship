@@ -8,60 +8,47 @@
 
 <body>
     <main id="game">
-
         <header class="game-header">
             <h1 class="game-title">BATTLESHIP</h1>
-            <p id="game-message">Place your ships</p>
-            <p id="game-message">In 'X' axis</p>           
+            <p id="game-message">Select a ship, then click a cell to place it.</p>
         </header>
 
-        <section class="game-area">
+        <section id="placement-controls" class="placement-controls">
+            <div class="ship-selection">
+                <span class="info-label">SHIPS</span>
+                <div id="ship-list" class="ship-list"></div>
+            </div>
 
-            <!-- Player -->
+            <button id="orientation" type="button">AXIS: X</button>
+            <button id="start-game" type="button" disabled>START GAME</button>
+        </section>
+
+        <section class="game-area">
             <section class="board-section" id="player-section">
                 <h2 class="board-title">PLAYER</h2>
-
-                <div
-                    class="board"
-                    id="player-board"
-                    data-board="player"
-                    aria-label="Player board">
-                </div>
+                <div class="board" id="player-board" data-board="player" aria-label="Player board"></div>
             </section>
 
-            <!-- Computer -->
             <section class="board-section" id="computer-section">
                 <h2 class="board-title">COMPUTER</h2>
-
-                <div
-                    class="board"
-                    id="computer-board"
-                    data-board="computer"
-                    aria-label="Computer board">
-                </div>
+                <div class="board" id="computer-board" data-board="computer" aria-label="Computer board"></div>
             </section>
-
         </section>
 
         <section class="game-info">
-
             <div class="turn-display">
                 <span class="info-label">TURN</span>
-                <span id="turn">PLAYER</span>
+                <span id="turn">PLACEMENT</span>
             </div>
-
             <div class="ships-display">
                 <span class="info-label">SHIPS REMAINING</span>
-                <span id="ships-remaining">5</span>
+                <span id="ships-remaining">4</span>
             </div>
-
         </section>
 
         <section class="game-controls">
             <button id="new-game" type="button">NEW GAME</button>
         </section>
-
     </main>
-
 </body>
 </html>

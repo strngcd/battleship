@@ -52,8 +52,8 @@ class Computer {
                 this.gameBoard.placeShips(name,[target,shipSize])
             }else{
                 do{
-                    target = this.pickTarget()
-                    place = this.gameBoard.setCoord(target,i)
+                    target = this.pickTargetWithShipSize(10-shipSize)
+                    place = this.gameBoard.setCoord(target,shipSize)
                     check = this.gameBoard.checkShips(place)
                 }while(!check)
                 this.gameBoard.placeShips(name,[target,shipSize])
